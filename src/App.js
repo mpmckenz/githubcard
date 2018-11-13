@@ -3,40 +3,43 @@ import "./App.css";
 
 const githubProfile = "https://api.github.com/users/mpmckenz";
 
+// const testArr = { numberone: 1, numbertwo: 2, numberthree: 3 };
+// console.log(Object.entries(testArr));
+
 class App extends Component {
   state = { user: {}, active: false };
 
-  handleClick = event => {
+  componentDidMount = event => {
     fetch(githubProfile)
       .then(response => response.json())
       .then(profileInfo => {
-        this.setState(previousState => {
-          return {
-            user: profileInfo,
-            active: !previousState.active
-          };
-        });
-        // Object.entries(profileInfo);
+        this.setState({ user: profileInfo });
+        // active: !previousState.active
+        console.log({ profileInfo });
       });
+    // Object.entries(profileInfo);
   };
 
-  // handleClick() {
-  //   {this.setState(prevStaeactive: !previousState.active)}
-  // }
+  handleClick = event => {
+    this.setState(previousState => ({ active: !previousState.active }));
+  };
 
   render() {
     return (
       <div id="parentContainer">
         <button onClick={this.handleClick}>View Profile</button>
-        <div id="profileContainer" />
-        <p>Profile Name: {this.state.user.name}</p>
-        {/* <img>{this.state.user.avatar_url}</img> */}
-        <p>Login: {this.state.user.login}</p>
-        <p>Number of Followers: {this.state.user.followers}</p>
-        <p>
-          {this.state.user.name} is following {` `}
-          {this.state.user.following} other users
-        </p>
+        {this.state.active ? (
+          <div id="profileContainer">
+            <img alt="" src={this.state.user.avatar_url} />
+            <p>Profile Name: {this.state.user.name}</p>
+            <p>Login: {this.state.user.login}</p>
+            <p>Number of Followers: {this.state.user.followers}</p>
+            <p>
+              {this.state.user.name} is following {` `}
+              {this.state.user.following} other users
+            </p>
+          </div>
+        ) : null}
       </div>
     );
   }
