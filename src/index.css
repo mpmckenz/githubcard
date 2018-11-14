@@ -1,19 +1,25 @@
-:root {
+/* :root {
   padding-top: 100px;
   display: flex;
   width: 800px;
-}
+} */
 
-#spinner {
+/* #spinner {
   position: fixed;
   margin-left: 200px;
-}
+} */
 
 #spinner:hover {
   background-color: antiquewhite;
   box-shadow: gainsboro;
   border-radius: 15%;
   border: 5px darkred solid;
+}
+
+#card {
+  /* margin-top: 100px; */
+  height: 500px;
+  width: 300px;
 }
 
 .trinity-rings-spinner, .trinity-rings-spinner * {
