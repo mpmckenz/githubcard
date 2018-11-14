@@ -25,16 +25,14 @@ class App extends Component {
   render() {
     return (
       <Container>
-        <Button>
-          <div
-            id="spinner"
-            onClick={this.handleClick}
-            className="trinity-rings-spinner"
-          >
-            <div className="circle" />
-            <div className="circle" />
-            <div className="circle" />
-          </div>
+        <Button
+          id="spinner"
+          onClick={this.handleClick}
+          className="trinity-rings-spinner"
+        >
+          <div className="circle" />
+          <div className="circle" />
+          <div className="circle" />
         </Button>
         {this.state.active ? (
           <Card

@@ -1,14 +1,12 @@
 :root {
   padding-top: 100px;
-  text-align: center;
+  display: flex;
   width: 800px;
 }
 
-#parent {
-  border: solid black 2px;
-  width: 300px;
-  border-radius: 10%;
-  margin-left: 240px;
+#spinner {
+  position: fixed;
+  margin-left: 200px;
 }
 
 #spinner:hover {
@@ -18,23 +16,13 @@
   border: 5px darkred solid;
 }
 
-img {
-  height: 300px;
-  width: 300px;
-  border-radius: 15%;
-}
-
-#small {
-  width: 200px;
-}
-
 .trinity-rings-spinner, .trinity-rings-spinner * {
   box-sizing: border-box;
 }
 
 .trinity-rings-spinner {
-  height: 66px;
-  width: 66px;
+  height: 200px;
+  width: 200px;
   padding: 3px;
   position: relative;
   display: flex;
