@@ -52,6 +52,10 @@ class App extends Component {
                     {this.state.user.login}
                     <br />
                     <b>Public repositories:</b> {this.state.user.public_repos}
+                    <br />
+                    <a href="https://epic-spinners.epicmax.co/#/">
+                      Moving Icons
+                    </a>
                   </Typography>
                 </CardTitle>
               </div>
