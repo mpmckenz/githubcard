@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
-
+import { Button, Card, CardTitle, Container } from "react-materialize";
+import Typography from "@material-ui/core/Typography";
 const githubProfile = "https://api.github.com/users/mpmckenz";
 
 // const testArr = { numberone: 1, numbertwo: 2, numberthree: 3 };
@@ -8,16 +9,13 @@ const githubProfile = "https://api.github.com/users/mpmckenz";
 
 class App extends Component {
   state = { user: {}, active: false };
-
   componentDidMount = event => {
     fetch(githubProfile)
       .then(response => response.json())
       .then(profileInfo => {
         this.setState({ user: profileInfo });
-        // active: !previousState.active
-        console.log({ profileInfo });
+        console.log(Object.entries({ profileInfo }));
       });
-    // Object.entries(profileInfo);
   };
 
   handleClick = event => {
@@ -26,21 +24,41 @@ class App extends Component {
 
   render() {
     return (
-      <div id="parentContainer">
-        <button onClick={this.handleClick}>View Profile</button>
-        {this.state.active ? (
-          <div id="profileContainer">
-            <img alt="" src={this.state.user.avatar_url} />
-            <p>Profile Name: {this.state.user.name}</p>
-            <p>Login: {this.state.user.login}</p>
-            <p>Number of Followers: {this.state.user.followers}</p>
-            <p>
-              {this.state.user.name} is following {` `}
-              {this.state.user.following} other users
-            </p>
+      <Container>
+        <Button>
+          <div
+            id="spinner"
+            onClick={this.handleClick}
+            className="trinity-rings-spinner"
+          >
+            <div className="circle" />
+            <div className="circle" />
+            <div className="circle" />
           </div>
+        </Button>
+        {this.state.active ? (
+          <Card
+            className="small"
+            header={
+              <div id="parent">
+                <CardTitle image={this.state.user.avatar_url}>
+                  <br />
+                  <Typography variant="h3" gutterBottom>
+                    <b>{this.state.user.name}</b>
+                    <br />
+                  </Typography>
+                  <Typography variant="h4" gutterBottom>
+                    <b>Login: </b>
+                    {this.state.user.login}
+                    <br />
+                    <b>Public repositories:</b> {this.state.user.public_repos}
+                  </Typography>
+                </CardTitle>
+              </div>
+            }
+          />
         ) : null}
-      </div>
+      </Container>
     );
   }
 }
